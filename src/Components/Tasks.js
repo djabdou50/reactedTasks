@@ -2,6 +2,7 @@
  * Created by Abdeltif Bouziane on 21/11/2018.
  */
 import React, {Component} from 'react';
+import AssignedUsers from './AssignedUsers';
 
 class Tasks extends Component {
 
@@ -12,12 +13,18 @@ class Tasks extends Component {
             users : props.users,
             tasks : props.tasks,
         };
+        // this.assignUsers = this.assignUsers.bind(this);
     }
 
-    selectedTask = (e) => {
-        // console.log(e)
-        this.props.handleTaskSelect(e);
+    selectedTaskStatus = (TaskId, e) => {
+        // console.log(e, id)
+        this.props.handleTaskStatus(TaskId);
         // console.log(this.state.users)
+    }
+
+    assignUser = (idUser, idTask, action) => {
+        // console.log({idUser, idTask, action})
+        this.props.assignHandler({idUser, idTask, action})
     }
 
     listTasks = (d) => {
@@ -26,9 +33,15 @@ class Tasks extends Component {
 
         this.props.tasks.forEach(task => {
             let activeClass = '';
-            activeClass = task.done ? 'active' : 'notactive';
+            let activeTaskTxt = '';
+            activeClass = task.status ? 'active' : 'notactive';
+            activeTaskTxt = task.status ? 'done' : 'undone';
             // console.log(user)
-            taskList.push(<li key={task.id} onClick={()=>this.selectedTask(task.id)} className={activeClass}>{task.name} <span> Assign</span></li>)
+            taskList.push(
+                <li key={task.id}  className={activeClass}>{task.name}
+                    <button className="btn" onClick={() => this.selectedTaskStatus(task.id, this)}>{activeTaskTxt}</button>
+                    <AssignedUsers assignedUsers={task.users} users={this.props.users} task={task} handleAssign={this.assignUser}/>
+                </li>)
         });
         return taskList;
     };
@@ -36,7 +49,11 @@ class Tasks extends Component {
     render() {
         return (
             <div>
-                <ul>
+                <ul className="board">
+                    {this.listTasks(this.props.tasks)}
+
+                </ul>
+                <ul className="board">
                     {this.listTasks(this.props.tasks)}
 
                 </ul>
