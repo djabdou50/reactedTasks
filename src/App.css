@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #09090d;
   min-height: 100vh;
     min-width: 100vw;
     margin: 0;
@@ -60,15 +60,14 @@ ul{
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .delete {
     background-color: #71030a;
-    padding: 5px;
+    padding: 2px;
     font-size: 14px;
     float: right;
-    margin-top: 6px;
 }
 .delete:hover{
     background-color: #e0030d;
@@ -76,6 +75,49 @@ ul{
 .board {
     display: block;
     background-color: #383838;
-    min-width: 300px;
+    min-width: 400px;
     float: left;
+}
+.btn {
+    /*float: right;*/
+}
+
+/******/
+.box {
+    height: 100px;
+    max-width: 400px;
+    background-color: black;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.held {
+    border: solid 10px black;
+    background-color: black;
+}
+
+.holder {
+    height: 110px;
+    width: 110px;
+    margin: 10px;
+    border: solid 5px black;
+    background-color: white;
+    display: inline-block;
+}
+
+.hovered {
+    border: dotted 5px black;
+}
+
+.invisible {
+    display: none;
+}
+
+#container {
+    margin: auto;
+    top: 100px;
+    width: 400px;
+    position: relative;
 }

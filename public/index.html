@@ -5,6 +5,7 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -22,6 +23,73 @@
     <title>React App</title>
   </head>
   <body>
+
+  <!--<div id="container">-->
+      <!--<div class="holder">-->
+          <!--<div class="test">-->
+              <!--<div class="box" draggable="true">-->
+          <!--</div>-->
+
+          <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="holder">-->
+      <!--</div>-->
+  <!--</div>-->
+
+  <script>
+      // class App {
+      //
+      //     static init() {
+      //
+      //         App.box = document.getElementsByClassName('box')[0];
+      //
+      //         App.box.addEventListener("dragstart", App.dragstart)
+      //         App.box.addEventListener("dragend", App.dragend)
+      //
+      //         const containers = document.getElementsByClassName('holder');
+      //
+      //         for(const container of containers) {
+      //             container.addEventListener("dragover", App.dragover)
+      //             container.addEventListener("dragenter", App.dragenter)
+      //             container.addEventListener("dragleave", App.dragleave)
+      //             container.addEventListener("drop", App.drop)
+      //         }
+      //     }
+      //
+      //     static dragstart() {
+      //         this.className += " held"
+      //
+      //         setTimeout(()=>this.className="invisible", 0)
+      //     }
+      //
+      //     static dragend() {
+      //         this.className = "box"
+      //     }
+      //
+      //     static dragover(e) {
+      //         e.preventDefault()
+      //     }
+      //
+      //     static dragenter(e) {
+      //         e.preventDefault()
+      //         this.className += " hovered"
+      //     }
+      //
+      //     static dragleave() {
+      //         this.className = "holder"
+      //     }
+      //
+      //     static drop() {
+      //         this.className = "holder"
+      //         this.append(App.box)
+      //         console.log("drop")
+      //     }
+      //
+      // }
+      //
+      // document.addEventListener("DOMContentLoaded", App.init)
+  </script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
@@ -36,5 +104,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>

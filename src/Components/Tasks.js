@@ -16,9 +16,9 @@ class Tasks extends Component {
         // this.assignUsers = this.assignUsers.bind(this);
     }
 
-    selectedTaskStatus = (TaskId, e) => {
-        // console.log(e, id)
-        this.props.handleTaskStatus(TaskId);
+    selectedTaskStatus = (TaskId, boardID) => {
+        console.log(boardID, TaskId);
+        this.props.handleTaskStatus(TaskId, boardID);
         // console.log(this.state.users)
     }
 
@@ -27,10 +27,25 @@ class Tasks extends Component {
         this.props.assignHandler({idUser, idTask, action})
     }
 
-    listTasks = (d) => {
-        // console.log(d)
-        let taskList = [];
+    listBoards = (taskId) => {
+        let boarsList = [];
 
+        this.props.boards.forEach( board => {
+            boarsList.push(
+                <li
+                    key={board.id}
+                    className="dropdown-item"
+                    onClick={(e) => this.selectedTaskStatus(taskId, board.id)}
+                >{board.name}</li>
+            )
+        });
+        return boarsList;
+    }
+
+    listTasks = () => {
+        // console.log(d)
+
+        let taskList = [];
         this.props.tasks.forEach(task => {
             let activeClass = '';
             let activeTaskTxt = '';
@@ -38,26 +53,38 @@ class Tasks extends Component {
             activeTaskTxt = task.status ? 'done' : 'undone';
             // console.log(user)
             taskList.push(
-                <li key={task.id}  className={activeClass}>{task.name}
-                    <button className="btn" onClick={() => this.selectedTaskStatus(task.id, this)}>{activeTaskTxt}</button>
-                    <AssignedUsers assignedUsers={task.users} users={this.props.users} task={task} handleAssign={this.assignUser}/>
+                <li key={task.id} className={activeClass + " taskbox"} draggable="true">{task.name}
+
+                    <div className="dropdown text-right">
+                        <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Status
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {this.listBoards(task.id)}
+                        </ul>
+                    </div>
+
+                    <AssignedUsers
+                        assignedUsers={task.users}
+                        users={this.props.users}
+                        task={task}
+                        handleAssign={this.assignUser}
+                    />
                 </li>)
         });
         return taskList;
     };
 
+
+
     render() {
         return (
-            <div>
-                <ul className="board">
-                    {this.listTasks(this.props.tasks)}
 
-                </ul>
-                <ul className="board">
-                    {this.listTasks(this.props.tasks)}
+                <React.Fragment>
+                    {this.listTasks()}
+                </React.Fragment>
 
-                </ul>
-            </div>
         );
     }
 }

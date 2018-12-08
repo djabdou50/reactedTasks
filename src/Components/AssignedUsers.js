@@ -112,17 +112,19 @@ class AssignedUsers extends Component {
     render() {
         return (
             <div>
-                <button className="btn" onClick={(e) => this.assignUsers(this.props.task.id, e)}>Assign</button>
-                <input onChange={this.handelInput} className={this.state.assining} value={this.state.inputVal} type="text"/>
-                <button onClick={(e) => this.assignUsersValidate(this.state.inputVal, this.props.task.id, e)} className={this.state.assining}>ok</button>
-                <div className={this.state.assining}>
+                <div className="form-inline">
+                    <button className="btn btn-sm" onClick={(e) => this.assignUsers(this.props.task.id, e)}>Assign</button>
+                    <input onChange={this.handelInput} className={this.state.assining + " form-control"} value={this.state.inputVal} type="text"/>
+                    <button onClick={(e) => this.assignUsersValidate(this.state.inputVal, this.props.task.id, e)} className={this.state.assining +" btn btn-sm"}>ok</button>
+                    <div className={this.state.assining}>
+                        <ul>
+                            {this.listFoundUsers(this.props.task.id)}
+                        </ul>
+                    </div>
                     <ul>
-                        {this.listFoundUsers(this.props.task.id)}
+                        {this.listUsers(this.props.task.id)}
                     </ul>
                 </div>
-                <ul>
-                    {this.listUsers(this.props.task.id)}
-                </ul>
             </div>
         );
     }
